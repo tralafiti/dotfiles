@@ -7,6 +7,7 @@ set number	   					" Line numbers
 set backspace=indent,eol,start	" Allow backspace in insert mode			
 set nowrap						" Dont wrap lines
 set virtualedit=all				" Move courser everywhere
+set nomodeline					" Disable magic "vim: .." lines in files for security reasons
 
 " ===== Indentation =====
 set autoindent

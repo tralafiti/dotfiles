@@ -1,3 +1,5 @@
 [user]
 	name = Martin Geiseler
 	email = nuddelmaddin@gmail.com
+[core]
+	excludesfile = ~/.gitignore
