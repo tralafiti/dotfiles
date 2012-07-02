@@ -6,8 +6,7 @@ alias ...='cd ../..'
 alias _='sudo'
 
 # List direcory contents
-alias ll='ls -la'
-alias lh='ls -lah'
+alias ll='ls -lah'
 
 # mkdir & cd to it
 function mcdir() {
