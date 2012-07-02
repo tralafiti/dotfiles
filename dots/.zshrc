@@ -1,5 +1,7 @@
-# Path to your oh-my-zsh configuration.
+# Path to your zsh configuration.
 ZSH=$HOME/.dotfiles/zsh
+# Display red dots while waiting for completion.
+COMPLETION_WAITING_DOTS="true"
 
 # Add additional autocompletions to path
 fpath=($ZSH/completions $fpath)
