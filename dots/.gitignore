@@ -1,6 +1,9 @@
 # Mac OS X
 *.DS_Store
 
+# Editor
+.idea
+
 # Xcode
 *.pbxuser
 *.mode1v3

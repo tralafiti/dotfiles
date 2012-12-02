@@ -21,7 +21,12 @@ set scrolloff=8					" Start scrolling when we're 8 lines away from margins
 set sidescrolloff=15
 set sidescroll=1
 
-"set showmatch
+" ===== Search =========
+set ignorecase                  " Ignore case in search
+set smartcase                   " Only ignore case if the search term is all lower case
+set incsearch					" Incremental search
+
+set showmatch					" Highlight matching braces, brackets etc.
 set ruler
 set incsearch
 set paste
