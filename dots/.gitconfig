@@ -3,5 +3,3 @@
 	email = hallo@tralafiti.de
 [core]
 	excludesfile = ~/.gitignore
-[merge]
-	ff = false
