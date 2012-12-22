@@ -1,1 +1,1 @@
-find ~/.dotfiles/dots/ -type f -name ".*" -exec ln -s -f {} $HOME \;
+find ~/.dotfiles/dots -type f -name ".*" -exec ln -s -f {} $HOME \;
