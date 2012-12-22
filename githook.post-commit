@@ -1,1 +1,2 @@
-find ~/.dotfiles/dots -type f -name ".*" -exec ln -s -f {} $HOME \;
+find ~/.dotfiles/dots -type f -name ".*" -exec ln -sf {} $HOME \;
+find ~/.dotfiles/dots -type f -name "default.*" -exec sh -c 'cp -n $1 $HOME/.${1##*.}' funcname {} \;
