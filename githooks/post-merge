@@ -1,0 +1,3 @@
+find ~/.dotfiles/githooks -type f -exec ln -sf {} ~/.dotfiles/.git/hooks \;
+find ~/.dotfiles/dots -type f -name ".*" -exec ln -sf {} ~ \;
+find ~/.dotfiles/dots -type f -name "default.*" -exec sh -c 'cp -n $1 ~/.${1##*.}' funcname {} \;
