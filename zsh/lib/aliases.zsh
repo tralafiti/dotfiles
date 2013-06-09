@@ -8,6 +8,9 @@ alias _='sudo'
 # List direcory contents
 alias ll='ls -lah'
 
+# Well, you know - everyone keeps forgeting this
+alias wget='curl -OLR'
+
 # Easy updating of dotfiles where ever you are
 alias update-dotfiles='(cd ~/.dotfiles; git pull)';
 
