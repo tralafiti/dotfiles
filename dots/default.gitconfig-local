@@ -1,0 +1,5 @@
+# entries in this file take precedence over .gitconfig
+# this file is not traked by dotfiles.git
+
+[user]
+#	email = this.maschine.always.commits.with@email.com
