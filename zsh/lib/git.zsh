@@ -1,6 +1,7 @@
 function git_prompt_info() {
-  ref=$(git symbolic-ref HEAD 2> /dev/null) || return 
-  echo "$ZSH_THEME_GIT_PROMPT_PREFIX${ref#refs/heads/} $(parse_git_dirty)$ZSH_THEME_GIT_PROMPT_SUFFIX"
+  ref=$(git symbolic-ref HEAD 2> /dev/null) || \
+  ref=$(command git rev-parse --short HEAD 2> /dev/null) || return 
+  echo "$ZSH_THEME_GIT_PROMPT_PREFIX${ref#refs/heads/} $(git_remote_status) $(parse_git_dirty)$ZSH_THEME_GIT_PROMPT_SUFFIX"
 }
 
 # Checks if working tree is dirty
@@ -31,11 +32,23 @@ function current_branch() {
   echo ${ref#refs/heads/}
 }
 
-# Checks if there are commits ahead from remote
-function git_prompt_ahead() {
-  if $(echo "$(git log origin/$(current_branch)..HEAD 2> /dev/null)" | grep '^commit' &> /dev/null); then
-    echo "$ZSH_THEME_GIT_PROMPT_AHEAD"
-  fi
+# get the difference between the local and remote branches
+function git_remote_status() {
+    remote=${$(command git rev-parse --verify ${hook_com[branch]}@{upstream} --symbolic-full-name 2>/dev/null)/refs\/remotes\/}
+    if [[ -n ${remote} ]] ; then
+        ahead=$(git rev-list ${hook_com[branch]}@{upstream}..HEAD 2>/dev/null | wc -l | tr -d ' ')
+        behind=$(git rev-list HEAD..${hook_com[branch]}@{upstream} 2>/dev/null | wc -l | tr -d ' ')
+        if [ $ahead -eq 0 ] && [ $behind -gt 0 ]
+        then
+            echo "$ZSH_THEME_GIT_PROMPT_BEHIND$behind"
+        elif [ $ahead -gt 0 ] && [ $behind -eq 0 ]
+        then
+            echo "$ZSH_THEME_GIT_PROMPT_AHEAD$ahead"
+        elif [ $ahead -gt 0 ] && [ $behind -gt 0 ]
+        then
+            echo "$ZSH_THEME_GIT_PROMPT_DIVERGED"
+        fi
+    fi
 }
 
 # Formats prompt string for current git commit short SHA
