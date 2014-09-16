@@ -7,3 +7,5 @@
 	default = simple
 [include]
 	path = ~/.gitconfig-local
+[alias]
+	fuu = !git clean -df && git reset --hard
