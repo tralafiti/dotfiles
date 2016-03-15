@@ -15,6 +15,5 @@ xcuserdata/
 
 # generic files to ignore
 *~
-*.lock
 *.swp
 *.out
