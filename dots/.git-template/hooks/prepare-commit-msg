@@ -1,0 +1,49 @@
+#!/bin/sh
+# https://github.com/zsh-users/zsh/blob/57be7b743fbd7afb86edaac3ac86ef34182f86b9/Functions/VCS_Info/Backends/VCS_INFO_get_data_git
+# von ZSH geklaut
+VCS_INFO_git_getbranch () {
+    gitdir=$1
+    tmp=$1
+    actiondir=$1
+    gitsymref="git symbolic-ref HEAD"
+    actiondir=''
+    for tmp in "${gitdir}/rebase-apply" \
+               "${gitdir}/rebase"       \
+               "${gitdir}/../.dotest"; do
+        if [ -d ${tmp} ]; then
+            actiondir=${tmp}
+            break
+        fi
+    done
+    if [ -n ${actiondir} ]; then
+        gitbranch="$(${gitsymref} 2> /dev/null)"
+        [ -z ${gitbranch} ] && [ -r ${actiondir}/head-name ] \
+            && gitbranch="$(< ${actiondir}/head-name)"
+
+    elif [ -f "${gitdir}/MERGE_HEAD" ] ; then
+        gitbranch="$(${gitsymref} 2> /dev/null)"
+        [ -z ${gitbranch} ] && gitbranch="$(< ${gitdir}/MERGE_HEAD)"
+    elif [ -d "${gitdir}/rebase-merge" ] ; then
+        gitbranch="$(< ${gitdir}/rebase-merge/head-name)"
+    elif [ -d "${gitdir}/.dotest-merge" ] ; then
+        gitbranch="$(< ${gitdir}/.dotest-merge/head-name)"
+    else
+        gitbranch="$(${(z)gitsymref} 2> /dev/null)"
+        if [ $? -ne 0 ] ; then
+            gitbranch="refs/tags/$(git describe --all --exact-match HEAD 2>/dev/null)"
+            if [ $? -ne 0 ] ; then
+                gitbranch="${${"$(< $gitdir/HEAD)"}[1,7]}..."
+            fi
+        fi
+    fi
+    return 0;
+}
+gitdir=$(git rev-parse --git-dir);
+VCS_INFO_git_getbranch $gitdir;
+echo >> "$1"
+if ! revParse=$(git rev-parse --abbrev-ref $gitbranch); then
+	echo "$(echo ${gitbranch} | cut -d '/' -f3- )" >> "$1"
+	exit 0;
+fi
+echo $revParse >> "$1"
+
