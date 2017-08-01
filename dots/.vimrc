@@ -13,8 +13,9 @@ set nomodeline					" Disable magic "vim: .." lines in files for security reasons
 set autoindent
 set smartindent
 set smarttab
-set tabstop=4
-set shiftwidth=4
+set tabstop=4					" show existing tab with 4 spaces width
+set shiftwidth=4                " when indenting with '>', use 4 spaces width
+set expandtab                   " On pressing tab, insert 4 spaces
 
 " ===== Scrolling =======
 set scrolloff=8					" Start scrolling when we're 8 lines away from margins
