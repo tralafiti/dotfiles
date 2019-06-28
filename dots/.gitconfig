@@ -7,5 +7,9 @@
 	default = simple
 [include]
 	path = ~/.gitconfig-local
+[init]
+	templatedir = ~/.git-template
 [alias]
 	fuu = !git clean -df && git reset --hard
+[checkout]
+	defaultRemote = origin
