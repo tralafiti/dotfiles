@@ -8,16 +8,15 @@ alias _='sudo'
 # List direcory contents
 alias ll='ls -lah'
 
-# Well, you know - everyone keeps forgeting this
-alias wget='curl -OLR'
-
 # Easy updating of dotfiles where ever you are
 alias update-dotfiles='(cd ~/.dotfiles; git pull)';
 
 # Set docker env vars for dev docker machine
 alias d-env='eval $(docker-machine env default)';
+# Set minishift oc env vars
+alias oc-env='eval $(minishift oc-env)';
 
-alias gg='cd ~/Documents/Web/Global\ Group/projects/';
+alias gcs='cd ~/Development/GCS/projects/';
 
 # mkdir & cd to it
 function mcdir() {

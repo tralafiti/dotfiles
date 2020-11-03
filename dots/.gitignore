@@ -13,6 +13,10 @@
 project.xcworkspace/
 xcuserdata/
 
+# Direnv stuff
+.direnv
+.envrc
+
 # generic files to ignore
 *~
 *.swp
