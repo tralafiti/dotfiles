@@ -69,3 +69,6 @@ if [ "x$COMPLETION_WAITING_DOTS" = "xtrue" ]; then
   zle -N expand-or-complete-with-dots
   bindkey "^I" expand-or-complete-with-dots
 fi
+
+# load additional completions
+for completion_script ($ZSH/completions/*.zsh) source $completion_script

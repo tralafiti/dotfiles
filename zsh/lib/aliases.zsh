@@ -14,7 +14,7 @@ alias update-dotfiles='(cd ~/.dotfiles; git pull)';
 # Set docker env vars for dev docker machine
 #alias d-env='eval $(docker-machine env default)';
 function d-up() {
-  open --background -a "Docker";
+  open --hide --background -a "Docker";
   echo 'Docker For Desktop started. Waiting for hyperkit-VM to come up...'
   while ! docker system info > /dev/null 2>&1; do sleep 1; done
   echo 'Done'

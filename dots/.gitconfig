@@ -13,3 +13,5 @@
 	fuu = !git clean -df && git reset --hard
 [checkout]
 	defaultRemote = origin
+[pull]
+	rebase = false
