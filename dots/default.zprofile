@@ -3,5 +3,9 @@ export LANG="en_US.UTF-8"
 export EDITOR="/usr/bin/env vim"
 export LESS="$LESS eFRX"
 
-# source kubeconfigs
+# Homebrew on macOS
+#export PATH="/opt/homebrew/bin:$PATH"
+#export HOMEBREW_CASK_OPTS="--appdir=/Applications"
+
+# source local kubeconfigs
 export KUBECONFIG=.kubeconfig:$HOME/.kube/config
