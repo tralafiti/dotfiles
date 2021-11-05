@@ -72,8 +72,8 @@ sudo defaults write /Library/Preferences/SystemConfiguration/com.apple.smb.serve
 # Disable the over-the-top focus ring animation
 _defaults_write NSGlobalDomain NSUseAnimatedFocusRing -bool false
 
-# Adjust toolbar title rollover delay
-_defaults_write NSGlobalDomain NSToolbarTitleViewRolloverDelay -float 0
+# Display window titlebar icons (no rollover, always on)
+_defaults_write com.apple.universalaccess showWindowTitlebarIcons -bool true 
 
 # Expand save panel by default
 _defaults_write NSGlobalDomain NSNavPanelExpandedStateForSaveMode -bool true
@@ -86,8 +86,8 @@ _defaults_write NSGlobalDomain PMPrintingExpandedStateForPrint2 -bool true
 # Save to disk (not to iCloud) by default
 _defaults_write NSGlobalDomain NSDocumentSaveNewDocumentsToCloud -bool false
 
-# Disable automatic termination of inactive apps
-#_defaults_write NSGlobalDomain NSDisableAutomaticTermination -bool true
+# Disable automatic termination of inactive apps (terminate when you close the last window)
+_defaults_write NSGlobalDomain NSDisableAutomaticTermination -bool true
 
 # Disable Helper Menu beeing always-on-top
 _defaults_write com.apple.helpviewer DevMode -bool true
@@ -125,6 +125,9 @@ _defaults_write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadRight
 _defaults_write_currentHost NSGlobalDomain com.apple.trackpad.trackpadCornerClickBehavior -int 0
 _defaults_write_currentHost NSGlobalDomain com.apple.trackpad.enableSecondaryClick -bool true
 
+# Cursor: Disable Shake to Find
+_defaults_write .GlobalPreferences CGDisableCursorLocationMagnification -bool true
+
 # Enable full keyboard access for all controls
 # (e.g. enable Tab in modal dialogs)
 _defaults_write NSGlobalDomain AppleKeyboardUIMode -int 3
@@ -132,7 +135,7 @@ _defaults_write NSGlobalDomain AppleKeyboardUIMode -int 3
 # Disable press-and-hold for keys in favor of key repeat
 _defaults_write NSGlobalDomain ApplePressAndHoldEnabled -bool false
 
-# Set fastest possible keyboard repeat rate
+# Set fastest possible key repeat rate
 _defaults_write NSGlobalDomain KeyRepeat -int 1
 _defaults_write NSGlobalDomain InitialKeyRepeat -int 10
 
@@ -149,7 +152,6 @@ _defaults_write com.apple.screensaver askForPasswordDelay -int 0
 
 # Enable subpixel font rendering on non-Apple LCDs
 # Reference: https://github.com/kevinSuttle/macOS-Defaults/issues/17#issuecomment-266633501
-# TODO: wanted / nedded?
 _defaults_write NSGlobalDomain AppleFontSmoothing -int 1
 
 
@@ -172,14 +174,10 @@ _defaults_write com.apple.finder FXDefaultSearchScope -string "SCcf"
 _defaults_write com.apple.desktopservices DSDontWriteNetworkStores -bool true
 _defaults_write com.apple.desktopservices DSDontWriteUSBStores -bool true
 
-# Use list view in all Finder windows by default
-# Four-letter codes for the other view modes: `icnv`, `clmv`, `glyv`
-_defaults_write com.apple.finder FXPreferredViewStyle -string "clmv"
-
 # Show the ~/Library folder
-chflags nohidden ~/Library
+chflags nohidden ~/Library && xattr -d com.apple.FinderInfo ~/Library
 
-# Show icons for hard drives, servers, and removable media on the desktop
+# Hide icons for hard drives, servers, and removable media on the desktop
 _defaults_write com.apple.finder ShowHardDrivesOnDesktop -bool false
 _defaults_write com.apple.finder ShowExternalHardDrivesOnDesktop -bool false
 _defaults_write com.apple.finder ShowRemovableMediaOnDesktop -bool false
