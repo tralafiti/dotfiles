@@ -4,7 +4,7 @@ export EDITOR="/usr/bin/env vim"
 export LESS="$LESS eFRX"
 
 # Homebrew on macOS
-#export PATH="/opt/homebrew/bin:$PATH"
+#export PATH="/opt/homebrew/bin:/opt/homebrew/sbin:$PATH"
 #export HOMEBREW_CASK_OPTS="--appdir=/Applications"
 
 # source local kubeconfigs
