@@ -11,6 +11,7 @@
 	templatedir = ~/.git-template
 [alias]
 	fuu = !git clean -df && git reset --hard
+	stash-staged = "!bash -c \"git stash --keep-index; git stash push -m \"staged\" --keep-index; git stash pop stash@{1}\""
 [checkout]
 	defaultRemote = origin
 [pull]

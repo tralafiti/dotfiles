@@ -395,6 +395,19 @@ _defaults_write com.apple.messageshelper.MessageController SOInputLineSettings -
 
 
 ###############################################################################
+# MailMate                 https://manual.mailmate-app.com/hidden_preferences #
+###############################################################################
+echo ""
+echo "* Adjusting MailMate ..."
+
+# Do not select another after deleting one
+_defaults write com.freron.MailMate MmMessagesOutlineMoveStrategy -string "none"
+
+# Expand all threads containing unread messages
+_defaults write com.freron.MailMate MmAutomaticallyExpandThreadsEnabled -bool YES
+_defaults write com.freron.MailMate MmAutomaticallyExpandOnlyWhenCounted -bool YES
+
+###############################################################################
 # Suggest Restart                                                             #
 ###############################################################################
 echo ""
