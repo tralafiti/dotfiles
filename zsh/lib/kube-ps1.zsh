@@ -1,6 +1,6 @@
 # FROM https://github.com/jonmosco/kube-ps1/tree/dd367e49f8040d970be83dca07d9d889ca1ab3fb
-# Modified lines 243f to allow empty context without output
-#
+# * modified lines 243f to allow empty context without output
+# * adjusted lines 215ff to disable errors on systems without kubectl
 
 # Kubernetes prompt helper for bash/zsh
 # Displays current context and namespace
@@ -211,10 +211,11 @@ _kube_ps1_update_cache() {
   [[ "${KUBE_PS1_ENABLED}" == "off" ]] && return $return_code
 
   if ! _kube_ps1_binary_check "${KUBE_PS1_BINARY}"; then
+    return $return code
     # No ability to fetch context/namespace; display N/A.
-    KUBE_PS1_CONTEXT="BINARY-N/A"
-    KUBE_PS1_NAMESPACE="N/A"
-    return
+    #KUBE_PS1_CONTEXT="BINARY-N/A"
+    #KUBE_PS1_NAMESPACE="N/A"
+    #return
   fi
 
   if [[ "${KUBECONFIG}" != "${KUBE_PS1_KUBECONFIG_CACHE}" ]]; then
