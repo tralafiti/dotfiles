@@ -408,6 +408,15 @@ _defaults write com.freron.MailMate MmAutomaticallyExpandThreadsEnabled -bool YE
 _defaults write com.freron.MailMate MmAutomaticallyExpandOnlyWhenCounted -bool YES
 
 ###############################################################################
+# Zoom                                                                        #
+###############################################################################
+echo ""
+echo "* Adjusting Google Chrome ..."
+
+# Allow zoom urls opening app without confirmation
+_defaults write com.google.Chrome URLAllowlist -array 'zoommtg://*.zoom.us/*'
+
+###############################################################################
 # Suggest Restart                                                             #
 ###############################################################################
 echo ""

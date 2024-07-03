@@ -1,12 +1,14 @@
 ## Command history configuration
 HISTFILE=$HOME/.zsh_history
-HISTSIZE=10000
-SAVEHIST=10000
+HISTSIZE=30000
+SAVEHIST=30000
 
 
 # read and write to history file directly (dont combine with inc_append_history)
-setopt share_history
-# alsow record timestamp of each command
+#setopt share_history
+# write to history file immediately, not when the shell exits
+setopt inc_append_history_time
+# also record timestamp of each command
 setopt extended_history
 # skip duplicates when stepping through history
 setopt hist_find_no_dups
@@ -14,6 +16,8 @@ setopt hist_find_no_dups
 setopt hist_ignore_space
 # reload history command into the editing buffer instead of directly executing it
 setopt hist_verify
+# delete duplicates first when HISTFILE size exceeds HISTSIZE
+setopt hist_expire_dups_first
 
 # TODO https://unix.stackexchange.com/questions/16101/zsh-search-history-on-up-and-down-keys
 #autoload -U up-line-or-beginning-search

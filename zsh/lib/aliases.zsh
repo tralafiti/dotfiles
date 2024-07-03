@@ -39,4 +39,7 @@ function mcdir() {
 # Open in ...
 alias stree='open -a SourceTree'
 alias storm='open -a PhpStorm'
+alias land='open -a GoLand'
 
+# Favor gojq
+alias jq='gojq'

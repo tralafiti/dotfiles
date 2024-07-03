@@ -16,3 +16,5 @@
 	defaultRemote = origin
 [pull]
 	rebase = false
+[diff]
+	algorithm = histogram

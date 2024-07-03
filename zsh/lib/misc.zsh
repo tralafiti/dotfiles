@@ -15,6 +15,7 @@ export LC_CTYPE=$LANG
 
 # thank you docker inc for the free ads
 export DOCKER_SCAN_SUGGEST=false
+export DOCKER_CLI_HINTS=false
 
 # stop it brew
 export HOMEBREW_NO_ENV_HINTS=true
