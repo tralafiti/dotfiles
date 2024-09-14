@@ -3,7 +3,7 @@ Some dotfiles and two git hooks that will link all dotfiles into your home direc
 ## Installation (Git Read-Only)
 
 ```
-git clone git://github.com/tralafiti/dotfiles.git ~/.dotfiles
+git clone git@github.com:tralafiti/dotfiles.git ~/.dotfiles
 ~/.dotfiles/init.sh
 ```
 
