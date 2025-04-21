@@ -26,7 +26,17 @@ function d-down() {
 # Get a shell within Doocker Desktop VM, see https://github.com/justincormack/nsenter1
 alias d-shell='docker run -it --rm --privileged --pid=host justincormack/nsenter1'
 
-alias doc='docker compose';
+function doc() {
+  # fix for docker interpolation if working from a subdir
+  # see https://github.com/docker/compose/issues/11925
+  local dir="$PWD"
+  while [ "$dir" != "/" ]; do 
+      [ -e "$dir/docker-compose.yml" ] && break 
+      dir=$(dirname "$dir") 
+  done
+  (cd $dir && docker compose "$@")
+}
+
 alias d-debug="cdebug exec -it --rm"
 
 # Set minishift oc env vars

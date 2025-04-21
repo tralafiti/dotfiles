@@ -1,0 +1,23 @@
+#compdef doc
+compdef _doc doc 
+
+# reference docker's own completion
+_doc() {
+  # Set up the command line as if it was 'docker compose'
+  local service="docker"
+  local subcommand="compose"
+  
+  # Set the words array to replace 'doc' with 'docker compose'
+  words=("$service" "$subcommand" "${words[@]:1}")
+  
+  # Set CURRENT to account for the added word
+  (( CURRENT++ ))
+  
+  # Run the docker completion
+  _docker
+}  
+
+# don't run the completion function when being source-ed or eval-ed
+if [ "$funcstack[1]" = "_doc" ]; then
+    _doc
+fi
