@@ -43,7 +43,7 @@ alias d-debug="cdebug exec -it --rm"
 alias oc-env='eval $(minishift oc-env)';
 
 alias gcs='cd ~/Development/GCS/projects/';
-
+alias own='cd ~/Development/Own/';
 
 # mkdir & cd to it
 function mcdir() {

@@ -1,3 +1,3 @@
-if [ $commands[direnv] ]; then
+if [[ $+commands[direnv] ]]; then
     eval "$(direnv hook zsh)"
 fi
