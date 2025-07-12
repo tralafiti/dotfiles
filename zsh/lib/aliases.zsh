@@ -16,6 +16,8 @@ function d-up() {
   open --hide --background -a "Docker";
   echo 'Docker For Desktop started. Waiting for hyperkit-VM to come up...'
   while ! docker system info > /dev/null 2>&1; do sleep 1; done
+  echo 'Restarting dockerhost project to mitigrate ports not getting mapped when autostarted... #thanksKücken'
+  docker compose --project-name dockerhost restart
   echo 'Done'
 }
 # Stop Docker Desktop

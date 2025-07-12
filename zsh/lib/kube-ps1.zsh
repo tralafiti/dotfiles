@@ -1,4 +1,5 @@
 # FROM https://github.com/jonmosco/kube-ps1/blob/f412a4bc807f733a18cdeca39eee906d82910302/kube-ps1.sh
+# modified 238 to let KUBE_PS1_HIDE_IF_NOCONTEXT also match if binary is not available
 ##
 
 # Kubernetes prompt helper for bash/zsh
@@ -234,7 +235,7 @@ _kube_ps1_prompt_update() {
 
   if ! _kube_ps1_binary_check "${KUBE_PS1_BINARY}"; then
     # No ability to fetch context/namespace; display N/A.
-    KUBE_PS1_CONTEXT="BINARY-N/A"
+    KUBE_PS1_CONTEXT="N/A"
     KUBE_PS1_NAMESPACE="N/A"
     return $return_code
   fi
